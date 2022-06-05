@@ -16,16 +16,23 @@ function createTimeBlock() {
         var hour = i;
 
         var row = document.createElement('div');
-        $(row).addClass("row time-block");
+        row.classList.add("time-block");
+        row.classList.add("row")
 
         var hourBox = document.createElement('div');
-        $(hourBox).addClass("col-1 hour").text(hour);
+        hourBox.classList.add("hour");
+        hourBox.classList.add("col-1")
+        hourBox.textContent = hour;
 
         var taskBox = document.createElement("textarea");
-        $(taskBox).addClass(`col-10 description ${determineClass(grabDate(), i)}`);
+        taskBox.classList.add(`${determineClass(grabDate(), i)}`);
+        taskBox.classList.add("col-10")
+        taskBox.classList.add("description")
 
         var saveBtn = document.createElement("button");
-        $(saveBtn).addClass("col-1 saveBtn").text("Save");
+        saveBtn.classList.add("saveBtn");
+        saveBtn.classList.add("col-1");
+        saveBtn.textContent = "Save";
         saveBtn.addEventListener("click", saveTask());
 
         row.appendChild(hourBox);
