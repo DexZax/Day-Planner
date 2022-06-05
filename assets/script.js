@@ -5,7 +5,7 @@ var container = document.querySelector(".container");
 var grabDate = function() {
 todaysDate.textContent = new Date().toString();
 var currentHour = Number(new Date().toString().split(" ")[4].split(":")[0]);
-console.log(currentHour)
+return currentHour;
 }
 
 setInterval(grabDate, 1000);
@@ -13,7 +13,7 @@ setInterval(grabDate, 1000);
 function createTimeBlock() {
     determineClass();
     for (var i = 9; i <= 17; i++) {
-        var hour = i <= 12 ? i : i - 12;
+        var hour = i;
 
         var row = document.createElement('div');
         $(row).addClass("row time-block");
@@ -22,7 +22,7 @@ function createTimeBlock() {
         $(hourBox).addClass("col-1 hour").text(hour);
 
         var taskBox = document.createElement("textarea");
-        $(taskBox).addClass("col-10 description", determineClass(i));
+        $(taskBox).addClass(`col-10 description ${determineClass(grabDate(), i)}`);
 
         var saveBtn = document.createElement("button");
         $(saveBtn).addClass("col-1 saveBtn").text("Save");
@@ -31,11 +31,13 @@ function createTimeBlock() {
         row.appendChild(taskBox);
         row.appendChild(saveBtn);
         container.appendChild(row);
+        
     };
     
 };
 
 function determineClass(currentHour, hour) {
+    console.log(currentHour, hour)
     if (hour < currentHour) {
         return "past"
     }
