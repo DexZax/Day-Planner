@@ -26,18 +26,17 @@ function createTimeBlock() {
 
         var saveBtn = document.createElement("button");
         $(saveBtn).addClass("col-1 saveBtn").text("Save");
+        saveBtn.addEventListener("click", saveTask());
 
         row.appendChild(hourBox);
         row.appendChild(taskBox);
         row.appendChild(saveBtn);
         container.appendChild(row);
-        
     };
-    
 };
 
 function determineClass(currentHour, hour) {
-    console.log(currentHour, hour)
+   
     if (hour < currentHour) {
         return "past"
     }
@@ -49,5 +48,8 @@ function determineClass(currentHour, hour) {
     }
 }
 
+var saveTask = function() {
+    console.log("save")
+}
 
 createTimeBlock();
