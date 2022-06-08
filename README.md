@@ -1,15 +1,23 @@
-# Work Day Scheduler Starter Code
+# Day Planner
 
-GIVEN I am using a daily planner to create a schedule
-WHEN I open the planner
-X THEN the current day is displayed at the top of the calendar
-WHEN I scroll down
-X THEN I am presented with time blocks for standard business hours
-WHEN I view the time blocks for that day
-X THEN each time block is color-coded to indicate whether it is in the past, present, or future
-WHEN I click into a time block
-X THEN I can enter an event
-WHEN I click the save button for that time block
-THEN the text for that event is saved in local storage
-WHEN I refresh the page
-THEN the saved events persist
+## description
+
+A day planner. use this day planner to plan out your day! add events or things to do in the hour slots and save it!
+
+## installation
+
+Pull from my remote repository
+
+## usage
+
+add anything to the time blocks and save it. if the current hour of the day has passed the hour of the time block, it will show a color of grey. If the time of day is equal to the hour of the timeblock it will show a color of red representing the present hour. if the current hour of the day has not yet reached the hour of the time block, it will show a color of green, representing this time block is in the future.
+
+## credits
+
+N/A
+
+## license 
+
+N/A
+
+Deployed Link: 
