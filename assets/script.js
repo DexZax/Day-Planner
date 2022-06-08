@@ -1,19 +1,17 @@
 var todaysDate = document.querySelector("#currentDay");
 var timeBlock = $(".time-block");
+var currentHour = moment().format("H");
 
 // display date and grab the value of the hour
 var grabDate = function () {
   todaysDate.textContent = moment().format("dddd, MMMM Do YYYY, h:mm");
-  var currentHour = moment().format("H");
-  return currentHour;
 };
 // update the date every second
 setInterval(grabDate, 1000);
 
 // load tasks when page loads
 var loadTasks = function () {
-
-  // set text'#' variables equal to the corosponding 'key' (textarea id)
+  // set text'#' variables equal to the corosponding 'key' (textarea id) that has been saved
   var text9 = localStorage.getItem(9);
   var text10 = localStorage.getItem(10);
   var text11 = localStorage.getItem(11);
@@ -35,33 +33,21 @@ var loadTasks = function () {
   $("#16").val(text16);
   $("#17").val(text17);
 
-  // loop through time blocks
-  for (i = 9; i <= 17; i++) {
-    var hour = i;
-    // add a class to the textarea's based on the result of the 'determineClass' function
-    $(".description").addClass(`${determineClass(grabDate(), i)}`);
-  }
+  // loop through textareas and give it a class based on results of if statements
+  $(".description").each(function (i) {
+    var hour = i + 9;
+
+    if (hour < currentHour) {
+      $(this).addClass("past");
+    }
+    if (hour == currentHour) {
+      $(this).addClass("present");
+    }
+    if (hour > currentHour) {
+      $(this).addClass("future");
+    }
+  });
 };
-
-// function to determine class of textarea's
-function determineClass(currentHour, hour) {
-
-    // remove any previous classes
-  $(".description").removeClass("past present future");
-
-  // if the hour of the text area is less than the current hour in the day then give it a class of "past"
-  if (hour < currentHour) {
-    return "past";
-  }
-  // if the hour of the textarea is equal to the current hour in the day, set the class to "present"
-  if (hour == currentHour) {
-    return "present";
-  }
-  // if the current hour of the day is less than the hour of the text area, set the class to "future"
-  if (currentHour < hour) {
-    return "future";
-  }
-}
 
 // on click of the dave button in a particular row
 $(".row").on("click", ".saveBtn", function () {
