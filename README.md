@@ -23,5 +23,4 @@ N/A
 
 N/A
 
-Deployed Link: https://dexzax.github.io/super-disco/
-
+Deployed Link: https://dexzax.github.io/Day-Planner/
